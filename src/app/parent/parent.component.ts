@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-parent',
@@ -10,7 +11,7 @@ export class ParentComponent implements OnInit {
   messageToChild: string = '';
   messageFromChild: string = '';
 
-  constructor() { }
+  constructor( public dataService: DataService ) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,10 @@ export class ParentComponent implements OnInit {
 
   onReciveMessage(event: string){
     this.messageFromChild = event;
+  }
+
+  launchMessageService(){
+    this.messageToChild = this.dataService.messageServiceParent;
   }
 
 

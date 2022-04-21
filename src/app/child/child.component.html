@@ -2,10 +2,15 @@
     <h1>Child</h1>
     <div class="workZone">
         <div class="childmessage">
-            <p>message: {{message}}</p>         
+            <p>message: {{message}}</p>      
         </div>        
         <div class="childButtons">           
-            <button class="btn btn-primary m-1">Use Service</button>
+            <button 
+                    class="btn btn-primary m-1"
+                    (click)="launchMessageService()"
+                    >
+                    Use Service
+            </button>
             <button 
                     class="btn btn-primary m-1" 
                     (click)="launchMessage()"

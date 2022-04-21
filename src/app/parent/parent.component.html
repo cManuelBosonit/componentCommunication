@@ -2,10 +2,15 @@
     <h1>Parent</h1>
     <div class="workZone">
         <div class="parentMessage">
-            <p>message: {{messageFromChild}}</p>
-        </div>        
+            <p>message: {{messageFromChild}}</p>  
+        </div>               
         <div class="parentButtons">           
-            <button class="btn btn-primary m-1">Use Service</button>
+            <button 
+                    class="btn btn-primary m-1"
+                    (click)="launchMessageService()"
+                    >
+                    Use Service
+            </button>
             <button 
                     class="btn btn-primary m-1"
                     (click)="changeMessage()">Use Input Property</button>

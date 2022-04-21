@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
 
+  messageToChild: string = '';
+  messageFromChild: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  changeMessage(){
+    this.messageToChild = 'PARENT USING INPUT PROPERTY';
+  }
+
+  onReciveMessage(event: string){
+    this.messageFromChild = event;
+  }
+
+
 
 }

@@ -13,8 +13,15 @@
             </button>
             <button 
                     class="btn btn-primary m-1"
-                    (click)="changeMessage()">Use Input Property</button>
-            <button class="btn btn-primary m-1">Use Observable</button>
+                    (click)="changeMessage()"
+                    >
+                    Use Input Property</button>
+            <button 
+                    class="btn btn-primary m-1"
+                    (click)="changeMessageObservable()"
+                    >
+                    Use Observable
+            </button>
         </div>
     </div>
     <app-child 

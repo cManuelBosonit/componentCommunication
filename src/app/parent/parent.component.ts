@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { DataObservableService } from '../servicesObservable/data-observable.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-parent',
@@ -11,13 +12,19 @@ export class ParentComponent implements OnInit {
 
   messageToChild: string = '';
   messageFromChild: string = '';
+  messageToChildSubject: Subject<any> = new Subject<any>();
 
   constructor( 
               public dataService: DataService,
-              private ObservableService: DataObservableService
+              public observableService: DataObservableService
               ) { }
 
   ngOnInit(): void {
+
+    this.dataService.childMessageEvent
+      .subscribe(( texto ) => {
+        this.messageFromChild = texto;
+    })
 
     /* this.ObservableService.messageObservable$
       .subscribe( texto => {
@@ -34,16 +41,19 @@ export class ParentComponent implements OnInit {
   }
 
   launchMessageService(){
-    this.messageToChild = this.dataService.messageServiceParent;
+    //this.messageToChild = this.dataService.messageServiceParent;
+    this.dataService.emitParentMessage('PARENT USING SERVICE')
   }
 
   changeMessageObservable(){
-    /* this.ObservableService.messageObservable$.emit('PARENT USING OBSERVABLE') */
-    this.ObservableService.devolverMessageObservableToChild()
+    this.messageToChildSubject.next('PARENT USING OBSERVABLE');
+  }
+
+  changeMessageObservableBS(){
+    this.observableService.devolverMessageObservableToChild()
     .subscribe(valor =>{
       this.messageToChild = valor; 
     })
-
   }
 
 

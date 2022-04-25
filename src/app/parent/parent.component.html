@@ -22,11 +22,18 @@
                     >
                     Use Observable
             </button>
+            <button 
+                    class="btn btn-primary m-1"
+                    (click)="changeMessageObservableBS()"
+                    >
+                    Use Observable (BehaviorSubject)
+            </button>
         </div>
     </div>
     <app-child 
-                [message]="messageToChild"             
-                (messageToParen)="onReciveMessage($event)"           
+                [message]="messageToChild"  
+                [messageObservable$]="messageToChildSubject.asObservable()"             
+                (messageToParen)="onReciveMessage($event)"                       
                 >
     </app-child>
 </div>

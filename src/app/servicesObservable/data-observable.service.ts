@@ -1,15 +1,17 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataObservableService {
 
-  /* messageObservable$ = new EventEmitter<string>(); */
+ /*  messageObservable$ = new EventEmitter<string>(); */
 
-  messagePassToParent: BehaviorSubject<string> = new BehaviorSubject('CHILD USING OBSERVABLE');
-  messagePassToChild: BehaviorSubject<string> = new BehaviorSubject('PARENT USING OBSERVABLE');
+  messageToChildSubject: Subject<any> = new Subject<any>();
+
+  messagePassToParent: BehaviorSubject<string> = new BehaviorSubject('CHILD USING OBSERVABLE (BehaviorSubject)');
+  messagePassToChild: BehaviorSubject<string> = new BehaviorSubject('PARENT USING OBSERVABLE (BehaviorSubject)');
 
   constructor() { }
 
